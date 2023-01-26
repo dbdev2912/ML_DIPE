@@ -1,0 +1,34 @@
+.bg-light-blue{
+    background: $color-0;
+}
+
+.bg-white{
+    background: #fff;
+}
+
+.left-bg{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background-image: url(../media/bg-2.png);
+    background-position: left;
+    background-size: contain;
+}
+
+.login-container{
+    width: 80%;
+    max-width: $mobile-vp;
+}
+
+
+.check-box{
+    height: 20px;
+}
+
+.sign-btn{
+    padding: 0.5em 1em;
+    border: none;
+    text-transform: uppercase;
+    background-color: $mylan-color;
+    color: white;
+    border-radius: 12px;
+}

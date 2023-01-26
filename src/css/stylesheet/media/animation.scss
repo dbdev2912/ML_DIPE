@@ -1,0 +1,46 @@
+.hover{
+    transition: 0.25s ease;
+    &:hover{
+        background: $color-3;
+    }
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.no-overflow{
+    overflow: hidden;
+    transition: ease 0.25s;
+}
+
+.fade-in-ease{
+    animation-name: fadeInEase;
+    animation-duration: 1s;
+    opacity: 1;
+}
+
+@keyframes fadeInEase {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.drop-input{
+    overflow: hidden;
+    height: 0px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: ease 0.25s;
+    background: white;
+    
+    .drop-container{
+        height: 200px;
+        overflow-y: scroll;
+    };
+}
