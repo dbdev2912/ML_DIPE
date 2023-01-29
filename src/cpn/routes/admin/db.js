@@ -31,7 +31,7 @@ export default () => {
         }).then(res => res.json())
         .then( data => {
             const { table_id, field } = data;
-            console.log(field)
+            
             setTables([ ...tables, { ...table, table_id, fields: [ field ] } ])
         })
     }

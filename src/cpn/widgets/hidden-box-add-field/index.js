@@ -39,7 +39,7 @@ export default (props) => {
             headers: {
                 "content-type" : "application/json"
             },
-            body: JSON.stringify({ table_id: table.table_id, field:  { ...data, data_type: type.name } })
+            body: JSON.stringify({ table_id: table.table_id, table_name: table.table_name, field:  { ...data, data_type: type.name } })
         }).then( res => res.json() ).then( data => {
             addField( data.field );
         })

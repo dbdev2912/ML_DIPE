@@ -20,8 +20,8 @@ export default (props) => {
 
     return(
         <div className="dropbox border-1-bottom">
-            <div className="flex flex-aligned p-0-5 pointer" onClick={ (e) => { dropTriggered(e) } }>
-                <a href={ url } className="block text-16-px dropbox-label">{ label }</a>
+            <div className="flex flex-aligned p-1 pointer" onClick={ (e) => { dropTriggered(e) } }>
+                <a href={ url } className="block text-12-px dropbox-label">{ label }</a>
                 { items ?
                     <span className="drop-arrow"/>
                      : null
@@ -31,7 +31,7 @@ export default (props) => {
                 <div className="dropbox-container">
                 { items ?
                     items.map( item =>
-                        <div className="item" key ={ item.id }>
+                        <div className="item text-12-px" key ={ item.id }>
                             <a href={ item.url }>{ item.label }</a>
                         </div>
 
