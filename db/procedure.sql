@@ -76,7 +76,7 @@ $$
 
 
 /*
-	THỦ TỤC user_change_info ĐƯỢC DÙNG ĐỂ CẬP NHẬT MẬT KHẨU CHO NGƯỜI DÙNG ( pwd_string )
+	THỦ TỤC user_change_info ĐƯỢC DÙNG ĐỂ CẬP NHẬT THÔNG TIN CHI TIẾT CHO NGƯỜI DÙNG
     USAGE: user_change_info( redential_string, fullname, in_email, in_phone, in_address ) 
 */
 
@@ -103,5 +103,31 @@ BEGIN
     SELECT TRUE AS `success`, CONCAT("SUCCESSFULLY CHANGE DETAIL INFOs OF USER ", acc_string ) AS `content`;
 END
 $$
+
+
+
+/*
+	THỦ TỤC user_login ĐƯỢC DÙNG ĐỂ KIỂM TRA NGƯỜI DÙNG VÀ MẬT KHẨU CÓ ĐÚNG HAY KHÔNG
+    USAGE: user_login( account_string, pwd_string ) 
+*/
+
+DROP PROCEDURE IF EXISTS `user_login` $$
+CREATE PROCEDURE `user_login` ( IN in_account_string VARCHAR(255), IN in_pwd_string VARCHAR(255) )
+BEGIN
+	DECLARE user_existed INT;    
+    
+	SELECT COUNT(*) INTO user_existed FROM `accounts` WHERE `account_string` = in_account_string AND `pwd_string` = in_pwd_string;
+    IF user_existed > 0 THEN 
+		SELECT TRUE AS `success`, A.credential_string, account_role, account_status, account_role, fullname, phone, email, address
+        FROM `accounts` AS A 
+			INNER JOIN `account_detail` AS D 
+				ON D.credential_string = A.credential_string 
+		WHERE A.account_string = in_account_string;
+    ELSE
+		SELECT FALSE AS `success`;
+    END IF;
+END
+ 
+ $$
 
 DELIMITER ;
