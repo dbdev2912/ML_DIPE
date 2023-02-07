@@ -18,7 +18,6 @@ CREATE TABLE `account_detail`(
     phone 		VARCHAR(255),
     address 	TEXT
 );
-
 ALTER TABLE `account_detail` ADD CONSTRAINT `fk_account_accountdetail` FOREIGN KEY (credential_string) REFERENCES accounts( credential_string ) ON UPDATE CASCADE;
 
 -- CREATE TABLE `tables`(
