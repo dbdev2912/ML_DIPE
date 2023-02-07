@@ -1,7 +1,7 @@
 USE MLCMS;
-INSERT INTO ACCOUNTS VALUES
-('admin', '123', '1', 'admin_credential_string', 'admin'),
-('user', '123', '1', 'admin_credential_string_', 'user');
+-- INSERT INTO ACCOUNTS VALUES
+-- ('admin', '123', '1', 'admin_credential_string', 'admin'),
+-- ('user', '123', '1', 'admin_credential_string_', 'user');
 
 -- INSERT INTO PARTNER VALUES
 -- ('Công ty Cổ Phần Mỹ Lan', 'Khu công nghiệp Long Đức, Trà Vinh',
