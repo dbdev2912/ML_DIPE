@@ -73,4 +73,35 @@ END
 $$
 
 
+
+
+/*
+	THỦ TỤC user_change_info ĐƯỢC DÙNG ĐỂ CẬP NHẬT MẬT KHẨU CHO NGƯỜI DÙNG ( pwd_string )
+    USAGE: user_change_info( redential_string, fullname, in_email, in_phone, in_address ) 
+*/
+
+DROP PROCEDURE IF EXISTS `user_change_info` $$
+CREATE PROCEDURE `user_change_info` (
+	IN in_credential_string VARCHAR(255), 
+    
+    IN in_fullname 		VARCHAR(255),
+    IN in_email 		VARCHAR(255),
+    IN in_phone 		VARCHAR(255),
+    IN in_address 		TEXT
+)
+BEGIN
+	DECLARE acc_string VARCHAR(255);
+    SELECT account_string INTO acc_string FROM `accounts` WHERE `credential_string` = in_credential_string;
+    
+	UPDATE `account_detail` SET 
+    `fullname` = in_fullname, 
+    `email` = in_email, 
+    `phone` = in_phone, 
+    `address` = in_address
+    WHERE `credential_string` = in_credential_string;
+    
+    SELECT TRUE AS `success`, CONCAT("SUCCESSFULLY CHANGE DETAIL INFOs OF USER ", acc_string ) AS `content`;
+END
+$$
+
 DELIMITER ;
