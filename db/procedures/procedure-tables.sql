@@ -36,4 +36,5 @@ BEGIN
 END
 $$
 
+/* Viết code nodejs để thêm bảng và trường vì Dynamic SQL không đc phép chạy trong trigger */
 
