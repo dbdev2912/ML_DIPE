@@ -35,10 +35,16 @@ CREATE TABLE `fields`(
     nullable BOOL DEFAULT TRUE,
     field_props JSON,
     field_data_type VARCHAR(255),
-    default_value TEXT,
     is_primary BOOL DEFAULT FALSE
 );
+
+CREATE TABLE `default_value`(
+	field_id INT PRIMARY KEY NOT NULL,
+    default_value TEXT
+);
+
 ALTER TABLE `fields` ADD CONSTRAINT `fk_fields_table` FOREIGN KEY ( `table_id` ) REFERENCES `tables`(`table_id`) ON UPDATE CASCADE ON DELETE CASCADE;
+ALTER TABLE `default_value` ADD CONSTRAINT `fk_field_default_value` FOREIGN KEY ( `field_id` ) REFERENCES `fields`(`field_id`) ON UPDATE CASCADE;
 
 -- CREATE TABLE `foreign_keys`(
 -- 	key_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
