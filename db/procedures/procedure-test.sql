@@ -1,4 +1,4 @@
-USE MLCMS;
+USE DIPE;
 -- CALL account_add("moc-admin", "123", "user"); 
 -- CALL user_activation("0fe78267-a6c1-11ed-bda0-70b5e82054d1", "1")
 -- CALL user_change_password("0fe78267-a6c1-11ed-bda0-70b5e82054d1", "mat khau moi ne")
@@ -6,4 +6,4 @@ USE MLCMS;
 -- CALL user_login("moc-admin", "13");
 -- CALL table_add("PRODUCT", "alias_customer_01021") 
 -- CALL table_modify(2, "Sẻn phửm")
-
+CALL `add_field`()

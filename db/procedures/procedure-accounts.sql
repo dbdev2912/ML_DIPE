@@ -1,4 +1,4 @@
-USE MLCMS;
+USE DIPE;
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS `account_add` $$

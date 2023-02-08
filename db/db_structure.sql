@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS MLCMS;
+DROP DATABASE IF EXISTS DIPE;
 
-CREATE DATABASE MLCMS;
-USE MLCMS;
+CREATE DATABASE DIPE;
+USE DIPE;
 
 CREATE TABLE `accounts`(
 	account_string 	VARCHAR(255) PRIMARY KEY NOT NULL,
@@ -35,14 +35,14 @@ CREATE TABLE `fields`(
     nullable BOOL DEFAULT TRUE,
     field_props JSON,
     field_data_type VARCHAR(255),
-    default_value TEXT
+    default_value TEXT,
+    is_primary BOOL DEFAULT FALSE
 );
 ALTER TABLE `fields` ADD CONSTRAINT `fk_fields_table` FOREIGN KEY ( `table_id` ) REFERENCES `tables`(`table_id`) ON UPDATE CASCADE ON DELETE CASCADE;
 
--- CREATE TABLE `_keys`(
+-- CREATE TABLE `foreign_keys`(
 -- 	key_id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 --     field_id INT,
---     key_type ENUM('primary', 'foreign'),
 --     reference_on INT /* this fucking other field of other table */
 -- );
 
