@@ -9,19 +9,17 @@
 .left-bg{
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
-    background-image: url(../media/bg-2.png);
-    background-position: left;
-    background-size: contain;
+    background-color: $color-0;
 }
 
 .login-container{
-    width: 80%;
-    max-width: $mobile-vp;
+    width: 448px;
+    // max-width: $mobile-vp;
 }
 
 
 .check-box{
-    height: 20px;
+    height: 14px;
 }
 
 .sign-btn{
@@ -31,4 +29,19 @@
     background-color: $mylan-color;
     color: white;
     border-radius: 12px;
+}
+
+.bg-blur{
+    filter: blur(6px);
+    -webkit-filter: blur(8px);
+}
+
+.lr{
+    background: linear-gradient(to bottom right, #003be4 , $color-0);
+}
+
+.r-lr{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

@@ -13,6 +13,9 @@ import "../css/index.scss";
 import AdminHome from './routes/admin/home';
 import AdminDB from './routes/admin/db';
 import AdminAccounts from './routes/admin/accounts';
+import AdminPrivileges from './routes/admin/privileges';
+import AdminDesginPages from './routes/admin/design/pages';
+import AdminDesginPageAdd from './routes/admin/design/pageadd';
 
 export default () => {
 
@@ -67,6 +70,22 @@ export default () => {
                                      <AdminAccounts />
                                   </React.StrictMode>
                               }/>
+                              <Route exac path = '/ml-admin/privileges' element={
+                                     <React.StrictMode>
+                                       <AdminPrivileges />
+                                    </React.StrictMode>
+                                }/>
+                                <Route exac path = "/ml-admin/design/pages" element={
+                                       <React.StrictMode>
+                                         <AdminDesginPages />
+                                      </React.StrictMode>
+                                  }/>
+                                  <Route exac path = "/ml-admin/design/page/add" element={
+                                         <React.StrictMode>
+                                           <AdminDesginPageAdd />
+                                        </React.StrictMode>
+                                    }/>
+
                         </Routes>
                      </Router>
 

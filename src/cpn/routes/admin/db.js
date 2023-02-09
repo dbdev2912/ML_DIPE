@@ -31,7 +31,7 @@ export default () => {
         }).then(res => res.json())
         .then( data => {
             const { table_id, field } = data;
-            
+
             setTables([ ...tables, { ...table, table_id, fields: [ field ] } ])
         })
     }
@@ -63,7 +63,9 @@ export default () => {
                                 <span className="text-16-px p-0-5 block">BẢNG</span>
                             </div>
                             <div className="ml-auto flex flex-middle m-r-0-5">
-                                <button className="bg-white block text-20-px pointer bold no-border border-radius-8-px" onClick={ () => { setHiddenBox( !hiddenBox ) } }>+</button>
+                                <div>
+                                    <button className="bg-white block text-20-px pointer bold no-border border-radius-8-px" onClick={ () => { setHiddenBox( !hiddenBox ) } }>+</button>
+                                </div>
                             </div>
                         </div>
 

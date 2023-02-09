@@ -10,13 +10,15 @@ export default () => {
     const [ hiddenBox, setHiddenBox ] = useState(false);
     const unique_string = useSelector( state => state.unique_string );
 
-    const [ partner, setPartner ] = useState({})
+    const [ partner, setPartner ] = useState({
+        
+    })
 
     useEffect(()=> {
-        fetch(`/api/${unique_string}/partner`).then(res => res.json())
-        .then( ({ partner }) => {
-            setPartner(partner)
-        })
+        // fetch(`/api/${unique_string}/partner`).then(res => res.json())
+        // .then( ({ partner }) => {
+        //     setPartner(partner)
+        // })
     }, [])
 
     const submitPartnerChange = () => {
@@ -84,11 +86,11 @@ export default () => {
 
             </div>
 
-            { hiddenBox ? <HiddenBox closeBox = { () => { setHiddenBox( !hiddenBox ) } }
+            {/* hiddenBox ? <HiddenBox closeBox = { () => { setHiddenBox( !hiddenBox ) } }
                 partner= { partner }
                 setPartner = { setPartner }
                 submit = { submitPartnerChange }
-            /> : null }
+            /> : null */}
 
         </div>
     )

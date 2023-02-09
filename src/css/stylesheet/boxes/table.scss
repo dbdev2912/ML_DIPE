@@ -1,0 +1,9 @@
+.stripped{
+    &:nth-child(2n+1){
+        background-color: rgba(227,250,255);
+    }
+    &:hover{
+        background-color: rgba(210, 220, 255);
+        cursor: pointer;
+    }
+}

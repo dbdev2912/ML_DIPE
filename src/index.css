@@ -20,6 +20,7 @@ textarea{
 *{
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: "UTM Avo", sans-serif !important;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
