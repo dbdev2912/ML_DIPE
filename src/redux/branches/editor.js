@@ -1,3 +1,5 @@
+import { id } from '../../cpn/useful';
+
 export default (state, action) => {
     switch( action.type ){
         case "setPage":
@@ -48,7 +50,29 @@ const setCurrentMouseOn = ( state, action ) => {
 }
 
 const addNewBlock = (state, action) => {
-    const { currentMouseOn, selectedBlock } = state;
-    console.log( { currentMouseOn, selectedBlock } );
-    return state;
+    const { currentMouseOn, selectedBlock, elements } = state;
+
+    const addNode = (id, nodes, newNode) => {
+        nodes.map( node => {
+
+            if( node.id === id ){
+                const { children } = node
+
+                if( children ){
+                    children.push( newNode )
+                }else{
+                    node.children = [ newNode ]
+                }
+                return
+            }else{
+                if( node.children !== undefined ){
+                    return addNode( id, node.children, newNode )
+                }
+            }
+        })
+    }
+
+    addNode( currentMouseOn, elements.children, { id:  id(), type: selectedBlock, style: { display: "block", width: "200px", height: "100px" },children: [] })
+    console.log(elements)
+    return { ...state, elements };
 }
