@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import HorizonBar from '../layout/horizon-bar';
 import VerticalBar from '../layout/vertical-bar';
 import $ from 'jquery';
+import { id } from '../../../useful';
 
 
 export default () => {
@@ -18,12 +19,14 @@ export default () => {
     }, [])
 
     const submit = () => {
+        const page_id = id()
         fetch(`/api/${ unique_string }/page/add`, {
             method: "post",
             headers: { "content-type": "application/json" },
-            body: JSON.stringify({ page: data })
+            body: JSON.stringify({ page: {page_id, ...data} })
         }).then( res => res.json() ).then( (data) => {
-            console.log(data)
+            const { success } = data;
+            window.location = `/ml-admin/design/page/edit/${ page_id }`
         })
     }
 

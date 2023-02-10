@@ -19,6 +19,12 @@ export default () => {
             setVH( window.innerHeight - $("#horizon-bar").height() - 52 );
         })
 
+        fetch(`/api/${unique_string}/page/all`).then(res => res.json()).then(data => {
+            const { success, pages } = data;
+            if( success ){                
+                setPages(pages);
+            }
+        })
     }, [])
 
     return(
@@ -54,7 +60,7 @@ export default () => {
                         </div>
 
                         { pages.map( page =>
-                            <div className="flex stripped flex-no-wrap border-1-bottom" key={ page.page_id }>
+                            <div className="flex stripped flex-no-wrap border-1-bottom" key={ page.page_id } onClick={ () => { openTab(`/ml-admin/design/page/edit/${ page.page_id }`) } }>
                                 <div className="w-33-pct">
                                     <span className="block border-1-left p-0-5 text-16-px">{ page.title }</span>
                                 </div>
