@@ -6,6 +6,9 @@ export default (type) => {
         case "flexible":
             return <span className="block cpn-icon" style={{ backgroundImage: "url(/assets/cpn/flexible.png)" }}></span>
             break;
+        case "text":
+            return <span className="block cpn-icon" style={{ backgroundImage: "url(/assets/cpn/text.png)" }}></span>
+            break;
         default:
             <span className="block cpn-icon" style={{ backgroundImage: "url(/assets/cpn/null.png)" }}></span>
     }

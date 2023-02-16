@@ -11,13 +11,22 @@ export default (props) => {
             branch: "editor",
             type: "setAxis",
             payload: {
-                x: pageX, y: pageY,
+                x: -72, y: -72,
                 mouseState: "up",
             }
         })
+
         dispatch({
             branch: "editor",
             type: "addNewBlock"
+        })
+
+        dispatch({
+            branch: "editor",
+            type: "setCurrentMouseOn",
+            payload: {
+                id: ""
+            }
         })
         showBar();
     }

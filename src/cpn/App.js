@@ -76,12 +76,12 @@ export default () => {
                                        <AdminPrivileges />
                                     </React.StrictMode>
                                 }/>
-                            <Route exac path = "/ml-admin/design/pages" element={
+                            <Route exac path = "/ml-admin/design/pages" element= {
                                <React.StrictMode>
                                      <AdminDesginPages />
                                   </React.StrictMode>
                               }/>
-                            <Route exac path = "/ml-admin/design/page/add" element={
+                            <Route exac path = "/ml-admin/design/page/add" element= {
                                  <React.StrictMode>
                                    <AdminDesginPageAdd />
                                 </React.StrictMode>

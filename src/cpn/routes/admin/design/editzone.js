@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { blockRender, contentRender } from './renderers';
 
@@ -5,9 +7,12 @@ import $ from 'jquery';
 
 export default () => {
 
-    const { page, showBar, hideBar, elements, currentMouseOn } = useSelector(state => state);
+    const { page, showBar, hideBar, elements, currentMouseOn, currentEditingBlock } = useSelector(state => state);
     const { mouseState } = useSelector( state => state.axis );
     const dispatch = useDispatch();
+    const [ selectedId, setSI ] = useState("");
+    const [ enterOn, setEnterOn ] = useState("");
+
     // const mouseMove = (e) => {
     //     const { pageX, pageY } = e;
     //     if( mouseState != "up" ){
@@ -25,15 +30,21 @@ export default () => {
     const mouseEnterTrigger = (e, elt) => {
         const { id } = elt;
         if( mouseState === "move" ){
-                dispatch({
-                    branch: "editor",
-                    type: "setCurrentMouseOn",
-                    payload: {
-                        id
-                    }
-                })
-            }
+            dispatch({
+                branch: "editor",
+                type: "setCurrentMouseOn",
+                payload: {
+                    id
+                }
+            })
         }
+        setEnterOn(elt.id)
+    }
+
+    const mouseEnterTriggerButForContentOnly = (e, elt) => {
+        const { id } = elt;
+        setEnterOn(elt.id)
+    }
 
 
     const mouseLeaveTrigger = (e, elt) => {
@@ -42,14 +53,27 @@ export default () => {
         }
     }
 
+    const setCurrentEditing = (id) => {
+        if( id == enterOn ){
+            dispatch({
+                type: "setCurrentEditingBlock",
+                branch: "editor",
+                payload: {
+                    id
+                }
+            })
+        }
+    }
+
+
     const pageRender = (elts) => {
+
         return elts.map(elt => {
             if( !elt.children ){
-                return contentRender(elt)
+                return contentRender(elt, setCurrentEditing, mouseEnterTriggerButForContentOnly, currentMouseOn, currentEditingBlock)
             }else{
                 return (
-                    <div className="m-l-1" style={ elt.style } id={ elt.id } high-light={ elt.id === currentMouseOn ? "true" : "false" } onMouseEnter={ (e) => { mouseEnterTrigger(e, elt) } } onMouseLeave= { (e) => { mouseLeaveTrigger(e, elt) } }>
-                        <span className="text-20-px bold">{ elt.type }</span>
+                    <div style={ elt.style } id={ elt.id } onClick={ () =>  { setCurrentEditing(elt.id) } } high-light={ elt.id === currentMouseOn ? "true" : "false" } high-light-edit={ elt.id === currentEditingBlock ? "true" : "false" } onMouseEnter={ (e) => { mouseEnterTrigger(e, elt) } } onMouseLeave= { (e) => { mouseLeaveTrigger(e, elt) } }>
                         {
                             pageRender( elt.children )
                         }

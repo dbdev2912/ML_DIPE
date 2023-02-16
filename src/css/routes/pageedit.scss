@@ -18,8 +18,13 @@
 .zone{
     height: 100%;
     min-height: 100vh;
+    overflow-x: hidden;
 }
 
-div[high-light="true"]{
+*[high-light="true"]{
     background-color: #f0f0f0;
+}
+
+*[high-light-edit="true"]{
+    border: 1px dashed #000 !important;
 }

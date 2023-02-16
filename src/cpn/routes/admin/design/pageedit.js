@@ -10,9 +10,10 @@ import { openTab } from '../../../useful';
 import General from './editor/general';
 import Content from './editor/content';
 import Blocks from './editor/blocks';
-
+import Formater from './editor/formater';
 import EditZone from './editzone';
 import Movable from './editor/movable';
+
 
 export default () => {
     const unique_string = useSelector(state => state.unique_string);
@@ -69,9 +70,10 @@ export default () => {
                         <span className="arrow-right "/>
                     </div>
                     <div className="flex flex-no-wrap flex-center border-1-bottom">
-                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([1, 0, 0]) } }><span className={"text-16-px pointer black-hover " + (highLights[0] ? "black": "gray")}>Chung</span></div>
-                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([0, 1, 0]) } }><span className={"text-16-px pointer black-hover " + (highLights[1] ? "black": "gray")}>Khối</span></div>
-                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([0, 0, 1]) } }><span className={"text-16-px pointer black-hover " + (highLights[2] ? "black": "gray")}>Nội dung</span></div>
+                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([1, 0, 0, 0]) } }><span className={"text-16-px pointer black-hover " + (highLights[0] ? "black": "gray")}>Chung</span></div>
+                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([0, 1, 0, 0]) } }><span className={"text-16-px pointer black-hover " + (highLights[1] ? "black": "gray")}>Khối</span></div>
+                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([0, 0, 1, 0]) } }><span className={"text-16-px pointer black-hover " + (highLights[2] ? "black": "gray")}>Nội dung</span></div>
+                        <div className="p-1 p-l-2 p-r-2" onClick={ () => { setHighLights([0, 0, 0, 1]) } }><span className={"text-16-px pointer black-hover " + (highLights[3] ? "black": "gray")}>Format</span></div>
                     </div>
                 </div>
 
@@ -84,6 +86,9 @@ export default () => {
                     }
                     { highLights[2] ?
                         <Content /> : null
+                    }
+                    { highLights[3] ?
+                        <Formater /> : null
                     }
                 </div>
 

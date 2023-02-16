@@ -34,7 +34,7 @@ export default (props) => {
                         <span className="block cpn-icon" onMouseDown = { (e) => { mouseDownTrigger(e, "block") }} style={{ backgroundImage: "url(/assets/cpn/block.png)" }}></span>
                     </div>
                     <div className="cpn-icon-container">
-                        <span className="block cpn-icon" onMouseDown = { (e) => { mouseDownTrigger(e, "flexible") }} style={{ backgroundImage: "url(/assets/cpn/flexible.png)" }}></span>
+                        <span className="block cpn-icon" onMouseDown = { (e) => { mouseDownTrigger(e, "flex") }} style={{ backgroundImage: "url(/assets/cpn/flexible.png)" }}></span>
                     </div>
                 </div>
             </div>
