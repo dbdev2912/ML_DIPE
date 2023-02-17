@@ -23,6 +23,7 @@ textarea{
     font-family: "UTM Avo", sans-serif !important;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+    border: 1px solid transparent;
 }
 
 

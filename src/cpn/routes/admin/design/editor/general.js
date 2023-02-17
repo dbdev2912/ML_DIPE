@@ -2,13 +2,25 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 export default (props) => {
     const initialPage = useSelector( state => state.page )
-    const [ page, setPage ] = useState(initialPage)
 
+    const { elements } = useSelector( state => state );
+
+    const [ page, setPage ] = useState(initialPage)
+    const API_URL = "http://192.168.15.205:5000/api/hihi/saveJson/add"
     useEffect(() => {
         setPage(initialPage)
-    }, [initialPage])
-    const submit = () => {
+    }, [initialPage]);
 
+
+    const submit = () => {
+        console.log(elements)
+        fetch(API_URL, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ data: elements })
+        })
     }
 
     return(
@@ -32,7 +44,10 @@ export default (props) => {
                     <textarea value={ page.description } onChange = {
                         (e) => { setPage({ ...page, description: e.target.value }) }
                     } className="block w-65-pct p-0-5 border-1 border-radius-8-px" type="text"/>
-                </div>                
+                </div>
+                <div className="m-t-2">
+                    <button onClick={ submit }>Submit JSON</button>
+                </div>
             </div>
         : null}
         </div>

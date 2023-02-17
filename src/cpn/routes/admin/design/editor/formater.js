@@ -5,10 +5,13 @@ import cssData from './css-props';
 import DropBox from './input/dropbox';
 import ColorInput from './input/color';
 import StringInput from './input/string';
+import ChildrenDrop from './input/childrenDropBox';
+
 export default (props) => {
     const dispatch = useDispatch()
     const { css } = cssData;
     const { defaultStyle, currentEditingBlock } = useSelector( state => state );
+
     const propChange = (name, value) => {
         dispatch({
             branch: "editor",
@@ -39,14 +42,17 @@ export default (props) => {
         {  currentEditingBlock ?
             <div style={{ height: "90vh", overflow: "auto" }}>
                 { css.map( style =>
+                <React.StrictMode>
                     <div className="block w-100-pct p-1 flex flex-no-wrap">
                         <div className="w-50-pct flex flex-aligned">
-                            <span>{ style.prop }</span>
+                            <span>{ style.label }</span>
                         </div>
                         <div className="w-50-pct flex flex-aligned">
                             { renderInput( style, defaultStyle[ style.prop ] ) }
                         </div>
                     </div>
+                    { style.children != undefined ? <ChildrenDrop propChange={ propChange } styles={ style.children }/>: null }
+                </React.StrictMode>
                 )}
             </div>
         :

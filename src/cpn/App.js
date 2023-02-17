@@ -17,6 +17,7 @@ import AdminPrivileges from './routes/admin/privileges';
 import AdminDesginPages from './routes/admin/design/pages';
 import AdminDesginPageAdd from './routes/admin/design/pageadd';
 import AdminDesginPageEdit from './routes/admin/design/pageedit';
+import AdminDesginCPN from './routes/admin/design/cpn';
 
 export default () => {
 
@@ -91,6 +92,11 @@ export default () => {
                                     <AdminDesginPageEdit />
                                 </React.StrictMode>
                               }/>
+                            <Route exac path = "/ml-admin/design/cpn" element={
+                                <React.StrictMode>
+                                    <AdminDesginCPN />
+                                </React.StrictMode>
+                            }/>
                         </Routes>
                      </Router>
 

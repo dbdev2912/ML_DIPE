@@ -5,7 +5,7 @@ export default (props) => {
 
 
     const { style, propChange, defaultValue } = props;
-    const [ value, setValue ] = useState(defaultValue);
+    const [ value, setValue ] = useState( defaultValue );
     const [ height, setHeight ] = useState(0);
 
     const blurTrigger = (e) => {
@@ -26,7 +26,7 @@ export default (props) => {
             <div className="rel">
                 <div className="abs-default z-index-5 w-100-pct no-overflow" style={{ height: `${height}px` }}>
                     <div style={{ height: `${height}px`, overflowY: "scroll" }}>
-                    { style.defaultValue.map( val =>
+                    { style.values.map( val =>
                         <div>
                             <span className="block p-0-5 bg-white pointer hover" onClick={ () => { clickTrigger(val) } }>{ val }</span>
                         </div>

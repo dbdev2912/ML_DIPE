@@ -1,4 +1,5 @@
 import { id } from '../../cpn/useful';
+import cssData from '../../cpn/routes/admin/design/editor/css-props';
 
 export default (state, action) => {
     switch( action.type ){
@@ -90,7 +91,9 @@ const addNewBlock = (state, action) => {
         })
     }
 
-    addNode( currentMouseOn, elements.children, { id:  id(), type: selectedBlock, style: { display: selectedBlock, width: "100%", height: "100px" },children: [] })
+    const defaultStyle = makeDefaultNodeStyle();
+    console.log(defaultStyle)
+    addNode( currentMouseOn, elements.children, { id:  id(), type: selectedBlock, style: { ...defaultStyle, display: selectedBlock }, children: [] })
     return { ...state, elements };
 }
 
@@ -115,11 +118,29 @@ const addNewContent = (state, action) => {
             }
         })
     }
-
-    addNode( currentMouseOn, elements.children, { id:  id(), type: selectedBlock, style: { display: "block", width: "100%", height: "100px" }, content: "Lorem ispum"})
+    const defaultStyle = makeDefaultNodeStyle();
+    addNode( currentMouseOn, elements.children, { id:  id(), type: selectedBlock, style: { ...defaultStyle, display: selectedBlock }, content: "Lorem ispum"})
     return { ...state, elements };
 }
 
+const makeDefaultNodeStyle = () => {
+
+    let style = {}
+    const { css } = cssData;
+    const mapCssTree = ( nodes ) => {
+        nodes.map( node => {
+            style[ node.prop ] = node.defaultValue
+            if( node.children != undefined ){
+                return mapCssTree( node.children )
+            }else{
+                return
+            }
+        })
+    }
+
+    mapCssTree(css)
+    return style;
+}
 
 const setCurrentEditingBlock = ( state, action ) =>{
     const { id } = action.payload;
